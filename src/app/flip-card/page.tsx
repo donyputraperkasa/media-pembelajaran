@@ -107,26 +107,27 @@ export default function FlipCardPage() {
                 </>
               )}
             </div>
-            <div className="flex gap-4 mt-4">
+            
+            <div className="flex flex-col md:flex-row gap-4 mt-4 w-full">
               <button
                 onClick={() => {
                   setSelectedQuestion('');
                   setSelectedAnswer('');
                   setShowAnswer(false);
                 }}
-                className="px-6 py-3 bg-pink-500 text-white font-bold rounded-xl shadow-lg hover:bg-pink-600 transition text-2xl"
+                className="w-full text-center px-6 py-3 bg-pink-500 text-white font-bold rounded-xl shadow-lg hover:bg-pink-600 transition text-2xl"
               >
                 Clear
               </button>
               <button
                 onClick={resetTimer}
-                className="px-6 py-3 bg-orange-400 text-white font-bold rounded-xl shadow-lg hover:bg-orange-500 transition text-2xl"
+                className="w-full text-center px-6 py-3 bg-orange-400 text-white font-bold rounded-xl shadow-lg hover:bg-orange-500 transition text-2xl"
               >
                 Reset Timer
               </button>
               <button
                 onClick={() => setGameStarted(true)}
-                className="px-6 py-3 bg-sky-500 text-white font-bold rounded-xl shadow-lg hover:bg-sky-600 transition text-2xl"
+                className="w-full text-center px-6 py-3 bg-sky-500 text-white font-bold rounded-xl shadow-lg hover:bg-sky-600 transition text-2xl"
               >
                 Start Game
               </button>
