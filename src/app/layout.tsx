@@ -26,9 +26,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-screen">
+    <html lang="en" className="min-h-screen">
       <body
-        className={`h-screen flex flex-col ${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`min-h-screen flex flex-col overflow-y-auto ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Navbar />
         <div className="flex-1 w-full flex items-center justify-center overflow-hidden">

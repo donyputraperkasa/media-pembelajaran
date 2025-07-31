@@ -48,14 +48,14 @@ export default function FlipCardPage() {
 
   return (
     <div className="flex flex-col min-h-screen w-screen overflow-x-hidden">
-      <main className="flex-grow justify-center bg-gradient-to-br from-pink-200 via-yellow-100 to-cyan-200 flex flex-col items-center pt-32 pb-32 px-4 text-2xl animate-fade-in w-screen min-h-screen">
-        <header className="p-5 text-center">
-          <h1 className="text-7xl font-extrabold text-pink-700 mb-12 drop-shadow-xl animate-bounce">MATH CLASS</h1>
+      <main className="flex-grow justify-center bg-gradient-to-br from-pink-200 via-yellow-100 to-cyan-200 flex flex-col items-center pt-32 pb-32 px-4 text-2xl animate-fade-in w-screen h-screen overflow-y-auto">
+        <header className="text-center px-12 mt-64">
+          <h1 className="text-3xl font-extrabold text-pink-700 mb-12 drop-shadow-xl animate-bounce">MATH CLASS</h1>
         </header>
         
-        <div className="flex flex-wrap justify-center gap-12 p-8">
+        <div className="flex flex-col lg:flex-row justify-center items-center gap-12 p-4 w-full max-w-7xl">
           {/* bagian kiri yang flipcard */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 text-xl">
+          <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 gap-6 text-xl overflow-visible">
             {cardContents.map((card, index) => (
               <div
                 key={index}

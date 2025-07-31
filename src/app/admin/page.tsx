@@ -30,7 +30,7 @@ export default function AdminPage() {
     };
 
     return (
-        <main className="min-h-screen w-screen overflow-x-hidden bg-gradient-to-br from-yellow-100 via-blue-100 to-pink-100 p-8 pt-24">
+        <main className="min-h-screen w-screen overflow-x-hidden overflow-y-auto bg-gradient-to-br from-yellow-100 via-blue-100 to-pink-100 p-8 pt-32">
         <h1 className="text-3xl font-bold mb-6">Halaman untuk menambah soal untuk GURU</h1>
         <div className="mb-6 space-y-4">
             <input
