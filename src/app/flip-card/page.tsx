@@ -55,7 +55,7 @@ export default function FlipCardPage() {
         
         <div className="flex flex-wrap justify-center gap-12 p-8">
           {/* bagian kiri yang flipcard */}
-          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-3 gap-6 text-xl">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 text-xl">
             {cardContents.map((card, index) => (
               <div
                 key={index}
@@ -76,7 +76,7 @@ export default function FlipCardPage() {
           </div>
           
           {/* bagian kanan yang show anser timer  */}
-          <div className="w-[32rem] p-8 bg-yellow-50 bg-opacity-95 rounded-2xl shadow-2xl text-gray-800 text-2xl flex flex-col justify-between animate-fade-in">
+          <div className="w-full max-w-xl p-8 bg-yellow-50 bg-opacity-95 rounded-2xl shadow-2xl text-gray-800 text-2xl flex flex-col justify-between animate-fade-in">
             <div>
               {selectedQuestion && (
                 <>
