@@ -48,7 +48,7 @@ export default function FlipCardPage() {
 
   return (
     <div className="flex flex-col min-h-screen w-screen overflow-x-hidden">
-      <main className="flex-grow justify-center bg-gradient-to-br from-pink-200 via-yellow-100 to-cyan-200 flex flex-col items-center py-24 px-14 text-2xl animate-fade-in w-screen">
+      <main className="flex-grow justify-center bg-gradient-to-br from-pink-200 via-yellow-100 to-cyan-200 flex flex-col items-center pt-32 pb-32 px-4 text-2xl animate-fade-in w-screen min-h-screen">
         <header className="p-5 text-center">
           <h1 className="text-7xl font-extrabold text-pink-700 mb-12 drop-shadow-xl animate-bounce">MATH CLASS</h1>
         </header>
