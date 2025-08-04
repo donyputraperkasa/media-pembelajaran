@@ -16,6 +16,9 @@ export default function Home() {
           <Link href="/flip-card" className="text-2xl font-semibold text-blue-800 underline hover:text-blue-600 max-w-xs mx-auto">
             <img src="/images/flipcard.png" alt="Logo" className="w-48 h-48 hover:scale-105 transition-transform duration-300 mx-auto" />
           </Link>
+          <Link href="/support" className="text-2xl font-semibold text-blue-800 underline hover:text-blue-600 max-w-xs mx-auto">
+            <img src="/images/support.png" alt="Logo" className="w-48 h-48 hover:scale-105 transition-transform duration-300 mx-auto" />
+          </Link>
         </div>
       </div>
     </main>

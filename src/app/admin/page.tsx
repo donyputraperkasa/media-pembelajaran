@@ -5,7 +5,8 @@ import { useState, useEffect } from 'react';
 export default function AdminPage() {
     const [question, setQuestion] = useState('');
     const [answer, setAnswer] = useState('');
-    const [questions, setQuestions] = useState<{ question: string; answer: string }[]>([]);
+    const [image, setImage] = useState<string | undefined>(undefined);
+    const [questions, setQuestions] = useState<{ question: string; answer: string; image?: string }[]>([]);
 
     useEffect(() => {
         const stored = localStorage.getItem('questions');
@@ -16,11 +17,12 @@ export default function AdminPage() {
 
     const handleAdd = () => {
         if (!question.trim() || !answer.trim()) return;
-        const newList = [...questions, { question, answer }];
+        const newList = [...questions, { question, answer, image }];
         setQuestions(newList);
         localStorage.setItem('questions', JSON.stringify(newList));
         setQuestion('');
         setAnswer('');
+        setImage(undefined);
     };
 
     const handleDelete = (index: number) => {
@@ -47,6 +49,21 @@ export default function AdminPage() {
             onChange={(e) => setAnswer(e.target.value)}
             className="w-full p-2 border rounded"
             />
+            <input
+              type="file"
+              accept="image/*"
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                if (file) {
+                  const reader = new FileReader();
+                  reader.onloadend = () => {
+                    setImage(reader.result as string);
+                  };
+                  reader.readAsDataURL(file);
+                }
+              }}
+              className="w-full p-2 border rounded"
+            />
             <button
             onClick={handleAdd}
             className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
@@ -62,6 +79,9 @@ export default function AdminPage() {
                 <div>
                 <p className="font-medium">{q.question}</p>
                 <p className="text-sm text-gray-600">Jawaban: {q.answer}</p>
+                {q.image && (
+                  <img src={q.image} alt="Gambar soal" className="mt-2 max-w-xs rounded" />
+                )}
                 </div>
                 <button
                 onClick={() => handleDelete(i)}

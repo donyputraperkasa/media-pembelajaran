@@ -11,7 +11,7 @@ export default function FlipCardPage() {
   const [timeLeft, setTimeLeft] = useState(300); // 5 menit
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  const [cardContents, setCardContents] = useState<{ question: string; answer: string }[]>([]);
+  const [cardContents, setCardContents] = useState<{ question: string; answer: string; image?: string }[]>([]);
 
   useEffect(() => {
     const stored = localStorage.getItem('questions');
@@ -82,6 +82,13 @@ export default function FlipCardPage() {
                 <>
                   <h2 className="font-bold mb-2">Question:</h2>
                   <p>{selectedQuestion}</p>
+                  {cardContents.find(c => c.question === selectedQuestion)?.image && (
+                    <img
+                      src={cardContents.find(c => c.question === selectedQuestion)?.image}
+                      alt="Gambar soal"
+                      className="mt-4 max-w-full h-auto rounded shadow"
+                    />
+                  )}
                   {showAnswer ? (
                     <>
                       <h2 className="font-bold mt-4 mb-2">Answer:</h2>
