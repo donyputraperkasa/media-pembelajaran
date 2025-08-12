@@ -50,7 +50,7 @@ export default function FlipCardPage() {
     <div className="flex flex-col min-h-screen w-screen overflow-x-hidden">
       <main className="flex-grow justify-center bg-gradient-to-br from-pink-200 via-yellow-100 to-cyan-200 flex flex-col items-center pt-32 pb-32 px-4 text-2xl animate-fade-in w-screen h-screen overflow-y-auto">
         <header className="text-center px-12 mt-64">
-          <h1 className="text-3xl font-extrabold text-pink-700 mb-12 drop-shadow-xl animate-bounce">MATH CLASS</h1>
+          <h1 className="text-3xl font-extrabold text-pink-700 mb-12 drop-shadow-xl animate-bounce">FLIP CARD GAME</h1>
         </header>
         
         <div className="flex flex-col lg:flex-row justify-center items-center gap-12 p-4 w-full max-w-7xl">

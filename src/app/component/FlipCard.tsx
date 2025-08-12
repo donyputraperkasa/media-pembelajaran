@@ -45,7 +45,7 @@ export default function FlipCard({ number, content, question, onClick }: FlipCar
           {/* Back Side (Content) */}
           <div className="absolute w-full h-full backface-hidden rotate-y-180 bg-white rounded-xl flex flex-col items-center justify-center p-4 text-center text-base font-semibold overflow-hidden break-words text-ellipsis line-clamp-4 text-gray-800 border-2 border-gray-300">
             <p className="w-full overflow-hidden text-ellipsis whitespace-pre-line">
-              {question}
+              {content}
             </p>
           </div>
         </div>
