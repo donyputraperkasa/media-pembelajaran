@@ -7,6 +7,7 @@ export default function AdminPage() {
     const [answer, setAnswer] = useState('');
     const [image, setImage] = useState<string | undefined>(undefined);
     const [questions, setQuestions] = useState<{ question: string; answer: string; image?: string }[]>([]);
+    const [editIndex, setEditIndex] = useState<number | null>(null);
 
     useEffect(() => {
         const stored = localStorage.getItem('questions');
@@ -15,11 +16,19 @@ export default function AdminPage() {
         }
     }, []);
 
-    const handleAdd = () => {
+    const handleSave = () => {
         if (!question.trim() || !answer.trim()) return;
-        const newList = [...questions, { question, answer, image }];
-        setQuestions(newList);
-        localStorage.setItem('questions', JSON.stringify(newList));
+        if (editIndex === null) {
+            const newList = [...questions, { question, answer, image }];
+            setQuestions(newList);
+            localStorage.setItem('questions', JSON.stringify(newList));
+        } else {
+            const updated = [...questions];
+            updated[editIndex] = { question, answer, image };
+            setQuestions(updated);
+            localStorage.setItem('questions', JSON.stringify(updated));
+            setEditIndex(null);
+        }
         setQuestion('');
         setAnswer('');
         setImage(undefined);
@@ -29,6 +38,20 @@ export default function AdminPage() {
         const updated = questions.filter((_, i) => i !== index);
         setQuestions(updated);
         localStorage.setItem('questions', JSON.stringify(updated));
+        if (editIndex !== null && editIndex === index) {
+            setEditIndex(null);
+            setQuestion('');
+            setAnswer('');
+            setImage(undefined);
+        }
+    };
+
+    const handleEdit = (index: number) => {
+        const q = questions[index];
+        setQuestion(q.question);
+        setAnswer(q.answer);
+        setImage(q.image);
+        setEditIndex(index);
     };
 
     return (
@@ -65,10 +88,10 @@ export default function AdminPage() {
               className="w-full p-2 border rounded"
             />
             <button
-            onClick={handleAdd}
+            onClick={handleSave}
             className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
             >
-            Tambah Soal
+            {editIndex !== null ? 'Simpan Perubahan' : 'Tambah Soal'}
             </button>
         </div>
 
@@ -77,18 +100,26 @@ export default function AdminPage() {
             {questions.map((q, i) => (
             <li key={i} className="bg-white p-4 rounded shadow flex justify-between items-center">
                 <div>
-                <p className="font-medium">{q.question}</p>
+                <p className="font-medium">{i + 1}. {q.question}</p>
                 <p className="text-sm text-gray-600">Jawaban: {q.answer}</p>
                 {q.image && (
                   <img src={q.image} alt="Gambar soal" className="mt-2 max-w-xs rounded" />
                 )}
                 </div>
-                <button
-                onClick={() => handleDelete(i)}
-                className="text-red-600 hover:underline text-sm"
-                >
-                Hapus
-                </button>
+                <div className="flex space-x-4">
+                  <button
+                    onClick={() => handleEdit(i)}
+                    className="text-green-600 hover:underline text-sm"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    onClick={() => handleDelete(i)}
+                    className="text-red-600 hover:underline text-sm"
+                  >
+                    Hapus
+                  </button>
+                </div>
             </li>
             ))}
         </ul>

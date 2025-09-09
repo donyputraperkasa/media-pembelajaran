@@ -8,7 +8,7 @@ export default function FlipCardPage() {
   const [selectedQuestion, setSelectedQuestion] = useState('');
   const [selectedAnswer, setSelectedAnswer] = useState('');
   const [showAnswer, setShowAnswer] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(300); // 5 menit
+  const [timeLeft, setTimeLeft] = useState(420); // 5 menit
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const [cardContents, setCardContents] = useState<{ question: string; answer: string; image?: string }[]>([]);
@@ -43,7 +43,7 @@ export default function FlipCardPage() {
       clearInterval(intervalRef.current);
     }
     setGameStarted(false);
-    setTimeLeft(300);
+    setTimeLeft(420);
   };
 
   return (
@@ -53,8 +53,8 @@ export default function FlipCardPage() {
           <h1 className="text-3xl font-extrabold text-pink-700 mb-12 drop-shadow-xl animate-bounce">FLIP CARD GAME</h1>
         </header>
         
+        {/* bagian kiri yang flipcard */}
         <div className="flex flex-col lg:flex-row justify-center items-center gap-12 p-4 w-full max-w-7xl">
-          {/* bagian kiri yang flipcard */}
           <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 gap-6 text-xl overflow-visible">
             {cardContents.map((card, index) => (
               <div
